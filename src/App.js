@@ -3,7 +3,7 @@ import "./App.css";
 import { Button, Container, Row } from "react-bootstrap";
 import DataTable from "./components/DataTable";
 import { useDispatch, useSelector } from "react-redux";
-import { LoadAllUnis } from "./redux/actions/UniActions";
+import { ADDUnis, LoadAllUnis } from "./redux/actions/UniActions";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -21,6 +21,13 @@ function App() {
     setShow(!show);
   };
 
+    // Add first element to last 
+    const addUnis = () => {
+      let firstArray = AllUnis.push(AllUnis.shift());
+      dispatch(ADDUnis(firstArray));
+  
+    };
+
   return (
     <Container>
       <Row>
@@ -31,7 +38,7 @@ function App() {
             <Button variant="secondary" onClick={fetchTableonClick}>
               Hide
             </Button>
-            <Button variant="primary">ADD</Button>
+            <Button variant="primary" onClick={addUnis}>ADD</Button>
             <Button variant="danger">Remove</Button>
           </div>
         ) : (

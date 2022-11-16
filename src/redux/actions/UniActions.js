@@ -18,3 +18,11 @@ export const LoadAllUnis = () => {
     }
     }
 
+    export const ADDUnis = (firstArr) =>{
+     // console.log({"FirstID":firstArr})
+    return{
+        type:types.ADD_UNIVERSITY,
+        payload:firstArr
+    }
+    
+    }    
