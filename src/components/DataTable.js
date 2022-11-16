@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
 
-const DataTable = () => {
+const DataTable = ({universities}) => {
   return (
    <div className="mt-4 d-flex">
    <Table striped bordered hover>
@@ -16,15 +16,24 @@ const DataTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-     
+      {universities.map((uni, index) => {
+        return (
+          <tr key={index}>
+            <td>{index}</td>
+
+            <th>{uni.name}</th>
+            <th>
+              <a link={`.${uni.web_pages}.`}>{uni.web_pages}</a>
+            </th>
+            <th>{uni.alpha_two_code}</th>
+            <th>{uni.country}</th>
+            <th>
+              <ul>{uni.domains}</ul>
+            </th>
+    
+          </tr>
+        );
+      })}
       </tbody>
     </Table>
    </div>
