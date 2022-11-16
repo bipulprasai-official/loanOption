@@ -17,6 +17,13 @@ const UniReducer = (state = initialState, action) => {
           (_, index) => (index = state.universities.length + 1)
         ),
       };
+    case types.REMOVE_UNIVERSITY:
+      return {
+        ...state,
+        universities: state.universities.filter(
+          (_, index) => index !== state.universities.length - 1
+        ),
+      };
     default:
       return state;
   }
